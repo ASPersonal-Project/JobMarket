@@ -7,6 +7,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     database: 'JobMarket',
     synchronize: true,
     useUnifiedTopology: true,
-    entities:[__dirname+'/../**/*.entity.ts'],
+    entities:[__dirname+'/../**/*.entity.js'],
     
 }
