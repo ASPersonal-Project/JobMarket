@@ -1,3 +1,6 @@
+import { ObjectID } from "typeorm";
+
 export interface jwtPayload{
-    userId:string;
+    // _id:string;
+    name:string;
 }

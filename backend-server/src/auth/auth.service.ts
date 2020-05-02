@@ -5,6 +5,8 @@ import { RegisterUserDto } from './dto/register-user.dto';
 import { LogUserDto } from './dto/log-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { jwtPayload } from './interface/jwt-payload.interface';
+import { ObjectID } from 'typeorm';
+
 
 @Injectable()
 export class AuthService {
@@ -19,10 +21,11 @@ export class AuthService {
     }
 
     async signIn(logUserDto: LogUserDto):Promise<{accessToken:string}> {
-        const userId = await this.userRepository.validateUserPassword(logUserDto);
-        if(!userId) throw new UnauthorizedException('Plese Register first');
+        const name= await this.userRepository.validateUserPassword(logUserDto);
+        // console.log(name);
+        if(!name) throw new UnauthorizedException('Plese Register first');
         // console.log(userId);
-        const payload:jwtPayload = {userId};
+        const payload:jwtPayload = {name};
         const accessToken:string = this.jwtServide.sign(payload);
         return {accessToken};
     }

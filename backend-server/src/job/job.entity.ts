@@ -1,9 +1,11 @@
-import { BaseEntity, ObjectIdColumn, Column, Entity } from "typeorm";
+import { BaseEntity, ObjectIdColumn, Column, Entity, ManyToOne, ObjectID } from "typeorm";
+import { User } from "src/auth/user.entity";
+import { type } from "os";
 
 @Entity()
 export class Job extends BaseEntity{
     @ObjectIdColumn()
-    _id: string;
+    _id: ObjectID;
 
     @Column()
     title: string;
@@ -13,4 +15,7 @@ export class Job extends BaseEntity{
 
     @Column()
     description: string;
+
+   @ManyToOne(type =>User,user => user.jobs)
+    user:ObjectID;
 }

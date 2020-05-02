@@ -31,10 +31,10 @@ export class UserRepository extends MongoRepository<User>{
     async validateUserPassword(logUserDto: LogUserDto):Promise<string>{
         const { email, password } = logUserDto;
         try {
-            const user = await this.findOne({ email }); 
+            const user = await this.findOne({ email });
             
             if (user && await user.validatePassword(password)) {
-                return user._id;
+                return user.name;
             } else {
                 return null;
             }
