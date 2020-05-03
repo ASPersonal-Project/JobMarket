@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { async } from 'rxjs/internal/scheduler/async';
 import * as bcrypt from 'bcrypt';
 
 export const userSchema = new mongoose.Schema({

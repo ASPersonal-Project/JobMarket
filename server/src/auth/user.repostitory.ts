@@ -34,7 +34,7 @@ export class UserRepository{
             const user =  await this.userModel.findOne({email});
 
             if(user && user.comparePassword(password)){
-                return user._id;
+                return user.name;
             }else{
                 return null;
             }
