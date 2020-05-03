@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import { async } from 'rxjs/internal/scheduler/async';
+import * as bcrypt from 'bcrypt';
 
 export const userSchema = new mongoose.Schema({
     name:{
@@ -13,6 +15,10 @@ export const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
-    }
+    },
 
-})
+});
+
+userSchema.methods.comparePassword = function(password){
+    return bcrypt.compareSync(password,this.password);
+}

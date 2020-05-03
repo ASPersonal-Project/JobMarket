@@ -4,7 +4,7 @@ import {MongooseModule} from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://localhost:27017/CampusMedia",{ useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true }),
+    MongooseModule.forRoot("mongodb://localhost:27017/JobMarket",{ useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true }),
     AuthModule
   ],
   

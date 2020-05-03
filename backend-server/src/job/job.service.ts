@@ -14,8 +14,8 @@ export class JobService {
     addJobVeconcy(addJobDto: AddJobDto,user:User):Promise<Job> {
         return this.jobRepository.addJob(addJobDto,user);
     }
-    allJobVacancy(){
-        const vacancies =  this.jobRepository.allJobVacancy();
+    async allJobVacancy(){
+        const vacancies = await this.jobRepository.allJobVacancy();
         console.log(vacancies);
         if(!vacancies) throw new NotFoundException('No Job Vacancy')
         return vacancies;

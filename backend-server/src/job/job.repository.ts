@@ -3,6 +3,7 @@ import { Job } from "./job.entity";
 import { AddJobDto } from "./dto/addJob.dto";
 import { typeOrmConfig } from "src/config/typeorm.config";
 import { User } from "src/auth/user.entity";
+import { userInfo } from "os";
 
 @EntityRepository(Job)
 export class JobRepository extends MongoRepository<Job>{
@@ -25,7 +26,7 @@ export class JobRepository extends MongoRepository<Job>{
     }
     async allJobVacancy(){
         try {
-            return await this.createQueryBuilder("job").leftJoinAndSelect("job.user","user").getMany();
+            return await this.findOne({relations:["user"]});
         } catch (error) {
             console.log(error);
         }

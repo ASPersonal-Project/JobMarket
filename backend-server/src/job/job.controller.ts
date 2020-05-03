@@ -19,8 +19,8 @@ export class JobController {
         return this.jobService.addJobVeconcy(addJobDto,user);
     }
     @Get('/')
-    fetchAllJobVacancy(){
-        return this.jobService.allJobVacancy()
+    async fetchAllJobVacancy(){
+         return await this.jobService.allJobVacancy()
     }
 
     // @Get('/me')
