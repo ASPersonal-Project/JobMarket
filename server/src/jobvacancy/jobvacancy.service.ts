@@ -10,15 +10,21 @@ export class JobvacancyService {
         private jobvacancyRepository:JObvacancyRepository,
     ){}
 
-    addJobvacancy(addJobvacancyDto:AddJobvacancyDto,user:User):Promise<Jobvacancy>{
-        return this.jobvacancyRepository.addJobvacancy(addJobvacancyDto,user);
+    createNotice(addJobvacancyDto:AddJobvacancyDto,user:User):Promise<Jobvacancy>{
+        return this.jobvacancyRepository.createNotice(addJobvacancyDto,user);
     }
 
-    getJobvacancy():Promise<Jobvacancy[]>{
-        return this.jobvacancyRepository.getJobvacancy();
+    getAllNotice():Promise<Jobvacancy[]>{
+        return this.jobvacancyRepository.getAllNotice();
     }
 
-    async removeNotice(id:string,user:User){
+    getNoticeById(id:string){
+        const notice = this.jobvacancyRepository.getNoticeById(id);
+        if(!notice) throw new NotFoundException();
+        return notice;
+    }
+
+    async removeNotice(id:string,user:User):Promise<string>{
         return await this.jobvacancyRepository.removeNotice(id,user);
        
     }

@@ -10,9 +10,21 @@ export const jobvacancySchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    location:{
+        type:String,
+        required:true
+    },
     title:{
         type:String,
-        required:true,
+        required:true
+    },
+    cvemail:{
+        type:String,
+        required:true
+    },
+    qualification:{
+        type:Array,
+        required:true
     },
     description:{
         type:String,

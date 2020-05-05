@@ -9,7 +9,7 @@ export class JObvacancyRepository{
         @InjectModel('Jobvacancy')
         private jobvacacyModel:Model<Jobvacancy>
     ){}
-    async addJobvacancy(addJobvacancyDto:AddJobvacancyDto,user:User):Promise<Jobvacancy>{
+    async createNotice(addJobvacancyDto:AddJobvacancyDto,user:User):Promise<Jobvacancy>{
         const {company,title,description} = addJobvacancyDto;
         const jobvacancy = new this.jobvacacyModel({
             user:user._id,
@@ -24,7 +24,7 @@ export class JObvacancyRepository{
             throw new InternalServerErrorException();
         }
     }
-    async getJobvacancy():Promise<Jobvacancy[]>{
+    async getAllNotice():Promise<Jobvacancy[]>{
         try {
             return await this.jobvacacyModel.find().sort({date:-1});
         } catch (error) {
@@ -32,16 +32,25 @@ export class JObvacancyRepository{
         }
     }
 
-    async removeNotice(id:string,user:User){
+    async removeNotice(id:string,user:User):Promise<string>{
         const jobvacancy = await this.jobvacacyModel.findById(id);
         if(!jobvacancy) throw new NotFoundException('Your advertice not found');
         if(jobvacancy.user.toString() !== user._id.toString()) throw new UnauthorizedException('You are not auterized')
         try {
             jobvacancy.remove();
+            return 'Successfully Remove the notice'
         } catch (error) {
             throw new InternalServerErrorException();
         }
        
+    }
+
+    async getNoticeById(id:string) {
+        try {
+            return this.jobvacacyModel.findById({_id:id});
+        } catch (error) {
+            throw new InternalServerErrorException()
+        }
     }
     async getOwnerNotice(user:User):Promise<Jobvacancy>{
         try {

@@ -13,22 +13,29 @@ export class JobvacancyController {
         private jobvacancyService:JobvacancyService,
     ){}
     @Post('/')
-    addJobvacancy(
+    createNotice(
         @Body() addJobvacancyDto:AddJobvacancyDto,
         @GetUser() user:User
         ):Promise<Jobvacancy>{
-        return this.jobvacancyService.addJobvacancy(addJobvacancyDto,user)
-    }
-    @Get('/')
-    getJobvacancy():Promise<Jobvacancy[]>{
-        return this.jobvacancyService.getJobvacancy();
+        return this.jobvacancyService.createNotice(addJobvacancyDto,user)
     }
 
-    @Delete(':id')
-    removeJobvacancy(
+    @Get('/')
+    getAllNotice():Promise<Jobvacancy[]>{
+        return this.jobvacancyService.getAllNotice();
+    }
+
+    @Get('/:id')
+    getNoticeById(@Param() params){
+        console.log(params.id)
+        return this.jobvacancyService.getNoticeById(params.id);
+    }
+
+    @Delete('delete/:id')
+    removeNotice(
         @Param() Params,
         @GetUser() user:User
-        ){
+        ):Promise<string>{
         
         return this.jobvacancyService.removeNotice(Params.id,user);
     }
@@ -37,4 +44,6 @@ export class JobvacancyController {
     getOwnerNotice(@GetUser() user:User):Promise<Jobvacancy>{
         return this.jobvacancyService.getOwnerNotice(user)
     }
+
+
 }
