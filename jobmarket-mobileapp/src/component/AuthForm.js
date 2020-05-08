@@ -21,13 +21,13 @@ const AuthForm = ({title,buttonText,text,routeName}) => {
         <>
         
         <Card title={title}>
-        <Input
-            label="Email Address"
-            placeholder='Email@address.com'
-            leftIcon={<Icon name='email' size={24} color='black'/>}
-            onChangeText={(email) => setState({email:email})}
-            defaultValue={email}
-            />
+            <Input
+                label="Email Address"
+                placeholder='Email@address.com'
+                leftIcon={<Icon name='email' size={24} color='black'/>}
+                onChangeText={(email) => setState({email:email})}
+                defaultValue={email}
+                />
             <Input
                 label="Password"
                 placeholder='password'
