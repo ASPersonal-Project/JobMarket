@@ -3,15 +3,11 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-import HomeScreen from './src/HomeScreen';
+import HomeScreen from './src/Screen/HomeScreen';
+import SigninScreen from './src/Screen/SigninScreen';
+import SignupScreen from  './src/Screen/SignupScreen';
 
-  function NotificationsScreen({ navigation }) {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button onPress={() => navigation.goBack()} title="Go back home" />
-      </View>
-    );
-  }
+  
 
   const Drawer = createDrawerNavigator();
 
@@ -23,7 +19,8 @@ const NavBar = () => {
             <NavigationContainer>
               <Drawer.Navigator initialRouteName="Home">
                 <Drawer.Screen name="Home" component={HomeScreen} />
-                <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+                <Drawer.Screen name="SignIn" component={SigninScreen} />
+                <Drawer.Screen name='SignUp' component={SignupScreen}/>
               </Drawer.Navigator>
             </NavigationContainer>
           );
