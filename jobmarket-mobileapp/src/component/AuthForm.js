@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { set } from 'react-native-reanimated';
 
-const AuthForm = ({title,buttonText,text,routeName}) => {
+const AuthForm = ({title,buttonText,text,routeName,onSubmit}) => {
     const navigation = useNavigation();
 
     const [state,setState] = useState({email:'',password:''});
@@ -38,6 +38,7 @@ const AuthForm = ({title,buttonText,text,routeName}) => {
             <Button
                 title={buttonText}
                 type="outline"
+                onPress={() => onSubmit({email,password})}
                 />
             <Text style={{margin:20}}>{text} <Text onPress={() => navigation.navigate({routeName})} style={{color:'blue'}}>{routeName}</Text></Text>
 {/* 

@@ -18,10 +18,10 @@ export class AuthService {
     }
 
     async signIn(loginUserDto:LoginUserDto):Promise<{accessToken:string}>{
-        const name = await this.userRepository.userValidation(loginUserDto);
+        const _id = await this.userRepository.userValidation(loginUserDto);
         // console.log(name); 
-        if(!name) throw new NotFoundException('Your Email or Password is Wrong');
-        const payload:jwtPayload = {name} 
+        if(!_id) throw new NotFoundException('Your Email or Password is Wrong');
+        const payload:jwtPayload = {_id} 
         // console.log(payload);
         const accessToken:string = this.jwtService.sign(payload);
 

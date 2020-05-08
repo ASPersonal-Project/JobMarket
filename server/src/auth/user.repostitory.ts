@@ -11,10 +11,9 @@ export class UserRepository{
         private userModel:Model<User>
     ){}
     async signUp(registerUserDto:RegisterUserDto){
-        const {name,email,password} = registerUserDto;
+        const {email,password} = registerUserDto;
 
         const user = new this.userModel({
-            name,
             email,
             password
         })
@@ -34,7 +33,7 @@ export class UserRepository{
             const user =  await this.userModel.findOne({email});
 
             if(user && user.comparePassword(password)){
-                return user.name;
+                return user._id;
             }else{
                 return null;
             }
