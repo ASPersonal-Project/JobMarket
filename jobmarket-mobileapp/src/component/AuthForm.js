@@ -25,14 +25,14 @@ const AuthForm = ({title,buttonText,text,routeName,onSubmit}) => {
                 label="Email Address"
                 placeholder='Email@address.com'
                 leftIcon={<Icon name='email' size={24} color='black'/>}
-                onChangeText={(email) => setState({email:email})}
+                onChangeText={(email) => setState({...state,email:email})}
                 defaultValue={email}
                 />
             <Input
                 label="Password"
                 placeholder='password'
                 leftIcon={<Icon name='lock' size={24} color='black'/>}
-                onChangeText={(password) => setState({password:password})}
+                onChangeText={(password) => setState({...state,password:password})}
                 defaultValue={password}
                 />
             <Button
@@ -41,8 +41,8 @@ const AuthForm = ({title,buttonText,text,routeName,onSubmit}) => {
                 onPress={() => onSubmit({email,password})}
                 />
             <Text style={{margin:20}}>{text} <Text onPress={() => navigation.navigate({routeName})} style={{color:'blue'}}>{routeName}</Text></Text>
-{/* 
-            <Text>{email}</Text> */}
+
+            <Text>{email}</Text>
 
         </Card>
             

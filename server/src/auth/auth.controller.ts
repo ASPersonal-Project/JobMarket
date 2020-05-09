@@ -12,6 +12,7 @@ export class AuthController {
 
     @Post('/signup')
     signUp(@Body() registerUserDto:RegisterUserDto){
+        console.log('call');
         return this.authService.signUp(registerUserDto);
     }
 

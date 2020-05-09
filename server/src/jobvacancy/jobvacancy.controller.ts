@@ -7,7 +7,7 @@ import { GetUser } from 'src/auth/user.decorator';
 import { User } from 'src/auth/interface/user.interface';
 
 @Controller('jobvacancy')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class JobvacancyController {
     constructor(
         private jobvacancyService:JobvacancyService,
@@ -22,6 +22,7 @@ export class JobvacancyController {
 
     @Get('/')
     getAllNotice():Promise<Jobvacancy[]>{
+        console.log('gtp');
         return this.jobvacancyService.getAllNotice();
     }
 
