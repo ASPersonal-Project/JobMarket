@@ -1,7 +1,12 @@
-import React from 'react'
+import React,{useEffect} from 'react';
+import {connect} from 'react-redux';
 import { View,Text,StyleSheet} from 'react-native';
+import {getAllNotice} from '../actions/noticeAction';
 
-const HomeScreen = () => {
+const HomeScreen = ({getAllNotice}) => {
+     useEffect(() => {
+        getAllNotice();
+    }, [])
     return (
         <View style={styles.container}>
             <Text >
@@ -11,7 +16,7 @@ const HomeScreen = () => {
     )
 }
 
-export default HomeScreen;
+export default connect(null,{getAllNotice})(HomeScreen);
 
 const styles = StyleSheet.create({
     container: {

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import {connect} from 'react-redux';
 import {View,StyleSheet } from 'react-native'
 import AuthForm from '../component/AuthForm'
 import {signUp} from '../actions/authAction';
 
-const SignupScreen = () => {
+const SignupScreen = ({signUp}) => {
     return (
        <View style={styles.container}>
            <AuthForm
@@ -17,7 +18,7 @@ const SignupScreen = () => {
     )
 }
 
-export default SignupScreen;
+export default connect(null,{signUp})(SignupScreen);
 
 const styles = StyleSheet.create({
     container:{

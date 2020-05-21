@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import {connect} from 'react-redux';
 import {View} from 'react-native';
 import {StyleSheet } from 'react-native';
 import AuthForm from '../component/AuthForm';
+import {signIn} from '../actions/authAction';
 
 
-const SigninScreen = () => {
+const SigninScreen = ({signIn}) => {
     return (
         <View style={styles.container}>
            <AuthForm 
@@ -12,11 +14,12 @@ const SigninScreen = () => {
             buttonText="Sign In"
             routeName="SignUp"
             text="Not register yet,Register Now"
+            onSubmit={signIn}
             />
         </View>
     )
 }
-export default SigninScreen;
+export default connect(null,{signIn})(SigninScreen);
 
 const styles = StyleSheet.create({
     container:{

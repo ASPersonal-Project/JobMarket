@@ -22,7 +22,7 @@ export class JobvacancyController {
 
     @Get('/')
     getAllNotice():Promise<Jobvacancy[]>{
-        console.log('gtp');
+        console.log('gettda');
         return this.jobvacancyService.getAllNotice();
     }
 
