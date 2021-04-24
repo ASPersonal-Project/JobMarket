@@ -11,12 +11,7 @@ const AuthForm = ({title,buttonText,text,routeName,onSubmit}) => {
 
     const [state,setState] = useState({email:'',password:''});
     const {email,password} = state;
-
-    // const onChange = (e) => {
-    //     setState({
-    //         ...state,[e.target.value]
-    //     })
-    // }
+    
     return (
         <>
         
@@ -38,7 +33,7 @@ const AuthForm = ({title,buttonText,text,routeName,onSubmit}) => {
             <Button
                 title={buttonText}
                 type="outline"
-                onPress={() => onSubmit({email,password})}
+                onPress={() => onSubmit({email,password,navigation})}
                 />
             <Text style={{margin:20}}>{text} <Text onPress={() => navigation.navigate({routeName})} style={{color:'blue'}}>{routeName}</Text></Text>
 
